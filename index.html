@@ -1,152 +1,128 @@
 <!DOCTYPE html>
-<html>
-<title>WT LAB 1</title>
+<html lang="en">
 
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- Font Awesome -->
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-   <!-- Google Fonts -->
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-   <!-- Bootstrap core CSS -->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-   <!-- Material Design Bootstrap -->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <style>
-      body {
-         background-color: #3F51B5;
-         margin-top: 1%;
-      }
-   </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
 </head>
+<style>
+    body {
+        margin: 2.5%;
+    }
+
+    .cdiv {
+        margin-bottom: 3%;
+        ;
+    }
+
+    a {
+        color: white;
+    }
+
+    a:visited {
+        color: white;
+    }
+
+    .cardh {
+        min-height: 250px
+    }
+</style>
 
 <body>
-   <div class="container-fluid">
-      <!-- Content here -->
-      <div class="row">
-         <div class="col-lg-6 col-sm-12 ">
-            <div class="card " style="margin-top: 1%;">
-               <div class="card-body" style="text-align: center;">
-                  <h2>Multiplication Table in PHP with Ajax</h2>
-               </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12" style="margin-bottom : 20px;color : white;">
+            <div class="card indigo text-center z-depth-2">
+                <h2 class="card-title" style="margin : 10px;">web technology lab</h2>
             </div>
-            <div class="card" style="margin-top: 2%;">
-               <div class="card-body">
-                  <form id="Mul">
-                     <div class="form-group">
-                        <label for="start" class="bmd-label-floating">Enter The Starting Number</label>
-                        <textarea class="form-control" name="start" id="start" rows="1"></textarea>
-                     </div>
-                     <div class="form-group">
-                        <label for="end" class="bmd-label-floating">Enter The Ending Number</label>
-                        <textarea class="form-control" name="end" id="end" rows="1"></textarea>
-                     </div>
+        </div>       
+    </div>
 
-                     <div class="form-group">
-                        <label for="mult" class="bmd-label-floating">Enter The Multiply Number</label>
-                        <textarea class="form-control" name="mult" id="mult" rows="1"></textarea>
-                     </div>
-
-                     <button type="submit" class="btn btn-raised btn-primary">submit</button>
-                  </form>
-               </div>
+    <div class="row">
+        <!-- Grid column -->
+        <div class="col-lg-4 col-md-6  cdiv">
+            <!--Panel-->
+            <div class="card text-center cardh">
+             <div class=" card-header indigo white-text">
+                Lab assistant 1
             </div>
-            <!--My Profile -->
-            <div class="card" style="margin-top: 2%;">
-               <div class="card-body">
+            <div class="card-body">
+                <h4 class="card-title">Generate multiplication table</h4>
 
-                  <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US"
-                     data-type="horizontal" data-theme="light" data-vanity="dnshko"><a class="LI-simple-link"
-                        href='https://in.linkedin.com/in/dnshko?trk=profile-badge'>Dinesh M</a>
-                  </div>
-               </div>
+                <a class="btn btn-indigo btn-sm">DEMO</a>
             </div>
-         </div>
-         <!--My Profile End-->
-         <!--Display the output-->
-         <div class="col-lg-6 col-sm-12">
-            <div class="card">
-               <div class="card-body" style="max-height: 745px;overflow: scroll;">
-                  <h6 class="card-title" style="text-align: center;">Result</h6>
-                  <hr>
-                  <h1 id="result"></h1>
-               </div>
+            <div class="card-footer text-muted indigo white-text">
+                <a class="mb-0" href="https://anjacmca.000webhostapp.com/WT/" target="_blank">APP CODE</a>
             </div>
-         </div>
-         <!--Display the output End-->
-      </div>
+        </div>
+        <!--/.Panel-->
 
-   </div>
-   <script>
-      // Variable to hold request
-      var request;
+    </div>
+    <!-- Grid column -->
+    <!-- Grid column -->
+    <div class="col-lg-4 col-md-6  cdiv">
+        <!--Panel-->
+        <div class="card text-center cardh">
+                     <div class=" card-header indigo white-text">
+            Lab assistant 2
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Swap two numbers using GET/POST method</h4>
 
-      // Bind to the submit event of our form
-      $("#Mul").submit(function (event) {
+            <a class="btn btn-indigo btn-sm">DEMO</a>
+        </div>
+        <div class="card-footer text-muted indigo white-text">
+            <a class="mb-0" href="https://anjacmca.000webhostapp.com/WT2/" target="_blank">APP CODE</a>
+        </div>
+    </div>
+    <!--/.Panel-->
 
-         // Prevent default posting of form - put here to work in case of errors
-         event.preventDefault();
+    </div>
+    <!-- Grid column -->
+    <!-- Grid column -->
+    <div class="col-lg-4 col-md-6  cdiv">
+        <!--Panel-->
+        <div class="card text-center cardh">
+             <div class=" card-header indigo white-text">
+            Lab assistant 3
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Perform the sum of digits using GET/POST method</h4>
 
-         // Abort any pending request
-         if (request) {
-            request.abort();
-         }
-         // setup some local variables
-         var $form = $(this);
+            <a class="btn btn-indigo btn-sm">DEMO</a>
+        </div>
+        <div class="card-footer text-muted indigo white-text">
+            <a class="mb-0" href="https://anjacmca.000webhostapp.com/WT3/" target="_blank">APP CODE</a>
+        </div>
+    </div>
+    <!--/.Panel-->
 
-         // Let's select and cache all the fields
-         var $inputs = $form.find("input,button");
+    </div>
+    <!-- Grid column -->
 
-         // Serialize the data in the form
-         var serializedData = $form.serialize();
+    </div>
 
-         // Let's disable the inputs for the duration of the Ajax request.
-         $inputs.prop("disabled", true);
-
-         // Fire off the request to /form.php
-         request = $.ajax({
-            url: "form.php",
-            type: "post",
-            data: serializedData
-         });
-
-         // Callback handler that will be called on success
-         request.done(function (response, textStatus, jqXHR) {
-            $('#result').html(response);
-         });
-
-         // Callback handler that will be called on failure
-         request.fail(function (jqXHR, textStatus, errorThrown) {
-            // Log the error to the console
-            console.error(
-               "The following error occurred: " +
-               textStatus, errorThrown
-            );
-         });
-
-         // Callback handler that will be called regardless
-         // if the request failed or succeeded
-         request.always(function () {
-            // Reenable the inputs
-            $inputs.prop("disabled", false);
-         });
-
-      });
-   </script>
-   <!-- JQuery -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <!-- Bootstrap tooltips -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
-   </script>
-   <!-- Bootstrap core JavaScript -->
-   <script type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-   <!-- MDB core JavaScript -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
-   </script>
-   <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    </script>
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 </body>
 
 </html>

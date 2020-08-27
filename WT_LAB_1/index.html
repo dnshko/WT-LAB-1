@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<title>WT LAB 1</title>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+   <!-- Google Fonts -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+   <!-- Bootstrap core CSS -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Material Design Bootstrap -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <style>
+      body {
+         background-color: #3F51B5;
+         margin-top: 1%;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container-fluid">
+      <!-- Content here -->
+      <div class="row">
+         <div class="col-lg-6 col-sm-12 ">
+            <div class="card " style="margin-top: 1%;">
+               <div class="card-body" style="text-align: center;">
+                  <h2>Multiplication Table in PHP with Ajax</h2>
+               </div>
+            </div>
+            <div class="card" style="margin-top: 2%;">
+               <div class="card-body">
+                  <form id="Mul">
+                     <div class="form-group">
+                        <label for="start" class="bmd-label-floating">Enter The Starting Number</label>
+                        <textarea class="form-control" name="start" id="start" rows="1"></textarea>
+                     </div>
+                     <div class="form-group">
+                        <label for="end" class="bmd-label-floating">Enter The Ending Number</label>
+                        <textarea class="form-control" name="end" id="end" rows="1"></textarea>
+                     </div>
+
+                     <div class="form-group">
+                        <label for="mult" class="bmd-label-floating">Enter The Multiply Number</label>
+                        <textarea class="form-control" name="mult" id="mult" rows="1"></textarea>
+                     </div>
+
+                     <button type="submit" class="btn btn-raised btn-primary">submit</button>
+                     
+                  </form>
+               </div>
+            </div>
+            <!--My Profile -->
+            <div class="card" style="margin-top: 2%;">
+               <div class="card-body">
+
+                  <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US"
+                     data-type="horizontal" data-theme="light" data-vanity="dnshko"><a class="LI-simple-link"
+                        href='https://in.linkedin.com/in/dnshko?trk=profile-badge'>Dinesh M</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!--My Profile End-->
+         <!--Display the output-->
+         <div class="col-lg-6 col-sm-12">
+            <div class="card" style="margin-top: 2%;">
+               <div class="card-body" style="max-height: 745px;overflow: scroll;">
+                  <h6 class="card-title" style="text-align: center;">Result</h6>
+                  <hr>
+                  <h1 id="result"></h1>
+               </div>
+            </div>
+         </div>
+         <!--Display the output End-->
+      </div>
+
+   </div>
+   <script>
+      // Variable to hold request
+      var request;
+
+      // Bind to the submit event of our form
+      $("#Mul").submit(function (event) {
+
+         // Prevent default posting of form - put here to work in case of errors
+         event.preventDefault();
+
+         // Abort any pending request
+         if (request) {
+            request.abort();
+         }
+         // setup some local variables
+         var $form = $(this);
+
+         // Let's select and cache all the fields
+         var $inputs = $form.find("input,button");
+
+         // Serialize the data in the form
+         var serializedData = $form.serialize();
+
+         // Let's disable the inputs for the duration of the Ajax request.
+         $inputs.prop("disabled", true);
+
+         // Fire off the request to /form.php
+         request = $.ajax({
+            url: "form.php",
+            type: "post",
+            data: serializedData
+         });
+
+         // Callback handler that will be called on success
+         request.done(function (response, textStatus, jqXHR) {
+            $('#result').html(response);
+         });
+
+         // Callback handler that will be called on failure
+         request.fail(function (jqXHR, textStatus, errorThrown) {
+            // Log the error to the console
+            console.error(
+               "The following error occurred: " +
+               textStatus, errorThrown
+            );
+         });
+
+         // Callback handler that will be called regardless
+         // if the request failed or succeeded
+         request.always(function () {
+            // Reenable the inputs
+            $inputs.prop("disabled", false);
+         });
+
+      });
+   </script>
+   <!-- JQuery -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <!-- Bootstrap tooltips -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+   </script>
+   <!-- Bootstrap core JavaScript -->
+   <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+   <!-- MDB core JavaScript -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+   </script>
+   <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</body>
+
+</html>
