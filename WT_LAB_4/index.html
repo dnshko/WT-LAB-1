@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<title>WT LAB 4</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #3F51B5;
+            margin-top: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Content here -->
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 ">
+                <div class="card " style="margin-top: 1%;">
+                    <div class="card-body" style="text-align: center;">
+                        <h2>String Manipulation </h2>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 2%;">
+                    <div class="card-body">
+                        <form id="Mul">
+                            <div class="form-group">
+                                <label for="start" class="bmd-label-floating">Enter The String:</label>
+                                <input type="text" class="form-control" name="strvalue" id="start" rows="1"></input>
+                            </div>
+                            <div class="from-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="Strlenfun" name="str"
+                                        value="Strlenfun">
+                                    <label class="custom-control-label" for="Strlenfun">Getting length of a String
+                                    </label>
+                                </div>
+
+                                <!-- Group of default radios - option 2 -->
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="Str_word_count" name="str"
+                                        value="Str_word_count">
+                                    <label class="custom-control-label" for="Str_word_count">Counting of the number of words in a String</label>
+                                </div>
+
+                                <!-- Group of default radios - option 3 -->
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="Strev" name="str"
+                                        value="Strev">
+                                    <label class="custom-control-label" for="Strev">Reversing a String
+                                    </label>
+                                </div>
+
+                                <!-- Group of default radios - option 4 -->
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="Ucwords" name="str"
+                                        value="Ucwords">
+                                    <label class="custom-control-label" for="Ucwords">Converting lowercase into Title Case
+                                    </label>
+                                </div>
+
+                                <!-- Group of default radios - option 5 -->
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="Stringtoupper" name="str"
+                                        value="Stringtoupper">
+                                    <label class="custom-control-label" for="Stringtoupper">Converting a whole string into UPPERCASE
+                                    </label>
+                                </div>
+
+                                <!-- Group of default radios - option 6 -->
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="Stringtolower" name="str"
+                                        value="Stringtolower">
+                                    <label class="custom-control-label" for="Stringtolower">Converting whole String to lowercase
+                                    </label>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-raised btn-primary">submit</button>
+
+                        </form>
+                    </div>
+                </div>
+                <!--My Profile -->
+                <div class="card" style="margin-top: 2%;">
+                    <div class="card-body">
+
+                        <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US"
+                            data-type="horizontal" data-theme="light" data-vanity="dnshko"><a class="LI-simple-link"
+                                href='https://in.linkedin.com/in/dnshko?trk=profile-badge'>Dinesh M</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--My Profile End-->
+            <!--Display the output-->
+            <div class="col-lg-6 col-sm-12">
+                <div class="card" style="margin-top: 2%;">
+                    <div class="card-body" style="max-height: 745px;overflow: scroll;">
+                        <h6 class="card-title" style="text-align: center;">Result</h6>
+                        <hr>
+                        <h1 id="result"></h1>
+                    </div>
+                </div>
+            </div>
+            <!--Display the output End-->
+        </div>
+
+    </div>
+    <script>
+        // Variable to hold request
+        var request;
+
+        // Bind to the submit event of our form
+        $("#Mul").submit(function (event) {
+
+            // Prevent default posting of form - put here to work in case of errors
+            event.preventDefault();
+
+            // Abort any pending request
+            if (request) {
+                request.abort();
+            }
+            // setup some local variables
+            var $form = $(this);
+
+            // Let's select and cache all the fields
+            var $inputs = $form.find("input,button");
+
+            // Serialize the data in the form
+            var serializedData = $form.serialize();
+
+            // Let's disable the inputs for the duration of the Ajax request.
+            $inputs.prop("disabled", true);
+
+            // Fire off the request to /form.php
+            request = $.ajax({
+                url: "String_Manipulation.php",
+                type: "post",
+                data: serializedData
+            });
+
+            // Callback handler that will be called on success
+            request.done(function (response, textStatus, jqXHR) {
+                $('#result').html(response);
+            });
+
+            // Callback handler that will be called on failure
+            request.fail(function (jqXHR, textStatus, errorThrown) {
+                // Log the error to the console
+                console.error(
+                    "The following error occurred: " +
+                    textStatus, errorThrown
+                );
+            });
+
+            // Callback handler that will be called regardless
+            // if the request failed or succeeded
+            request.always(function () {
+                // Reenable the inputs
+                $inputs.prop("disabled", false);
+            });
+
+        });
+    </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    </script>
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</body>
+
+</html>
